@@ -4,6 +4,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -38,8 +39,12 @@ public class WorkWithDataBace {
                     }
                 }
             }
-        } catch (Exception e) {
-            return null;
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
         }
         return listParticipant;
     }
@@ -58,7 +63,6 @@ public class WorkWithDataBace {
 
         return participant;
     }
-
 
     public static void saveToXML(ListParticipant listParticipant, String fileName) {
         File file = new File(fileName);
